@@ -54,11 +54,17 @@ with header:
     stroke  = st.radio(label = 'Have you ever had a stroke?', 
                         options = data['Stroke'])
 
-    physical= st.slider(label = 'Rate your ',
+    physical= st.slider(label = 'How many days was your physical health not good? (This can include illness or injury)',
                         min_value = 0,
-                        max_value = 24,
-                        value = 20,
-                        step = 0)
+                        max_value = 30,
+                        value = 0,
+                        step = 1)
+    
+    mental  = st.slider(label = 'How many days was your mental health not good?',
+                        min_value = 0,
+                        max_value = 30,
+                        value = 0,
+                        step = 1)
 
     walk    = st.radio(label = 'Do you have difficulty walking or climbing the stairs?', 
                         options = data['DiffWalking'])

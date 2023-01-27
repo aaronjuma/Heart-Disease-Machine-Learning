@@ -25,3 +25,4 @@ def turnInputsToDic(BMI, smoke, drink, stroke, ph, mh, dw, sex, age, race, dia, 
         'SkinCancer': skin
     }
 
+    return sample
