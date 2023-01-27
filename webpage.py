@@ -3,9 +3,6 @@ from turtle import setx
 import streamlit as st
 import json
 
-def reverseList(item):
-    return list(reversed(item))
-
 with open('columns.json') as json_file:
     data = json.load(json_file)
 
@@ -48,19 +45,19 @@ with header:
 
 
     smoke   = st.radio(label = 'Have you smoked at least 100 cigarettes in your entire life?', 
-                        options = reverseList(data['Smoking']))
+                        options = data['Smoking'])
 
     alcohol = st.radio(label = 'Do you drink alcohol?', 
-                        options = reverseList(data['AlcoholDrinking']))
+                        options = data['AlcoholDrinking'])
 
     stroke  = st.radio(label = 'Have you ever had a stroke?', 
-                        options = reverseList(data['Stroke']))
+                        options = data['Stroke'])
 
     walk    = st.radio(label = 'Do you have difficulty walking or climbing the stairs?', 
-                        options = reverseList(data['DiffWalking']))
+                        options = data['DiffWalking'])
 
     sex     = st.radio(label = 'What is your biological sex?', 
-                        options = reverseList(data['Sex']))
+                        options = data['Sex'])
 
     age     = st.selectbox(label = "What is your age?",
                         options = data['AgeCategory'])
@@ -72,25 +69,25 @@ with header:
                         options = data['Diabetic'])
 
     active  = st.radio(label = 'Are you physically active', 
-                        options = reverseList(data['PhysicalActivity']))
+                        options = data['PhysicalActivity'])
 
     health  = st.selectbox(label = 'What would you say your general health is like?', 
-                        options = reverseList(data['GenHealth']))
+                        options = data['GenHealth'])
 
-    sleep   = st.slider(label = 'On average, how many hours of sleep do you get on a daily basis?',
-                        min_value = 0.0,
-                        max_value = 24.0,
-                        value = 20.0,
-                        step = 0.5)
+    sleep   = st.number_input(label = 'On average, how many hours of sleep do you get on a daily basis?',
+                        min_value = 0,
+                        max_value = 24,
+                        value = 20,
+                        step = 0)
 
     asthma  = st.radio(label = 'Do you have/had asthma?', 
-                        options = reverseList(data['Asthma']))
+                        options = data['Asthma'])
 
     kidney  = st.radio(label = 'Do you have/had kidney cancer?', 
-                        options = reverseList(data['KidneyDisease']))
+                        options = data['KidneyDisease'])
 
     skin    = st.radio(label = 'Do you have/had skin cancer?', 
-                        options = reverseList(data['SkinCancer']))
+                        options = data['SkinCancer'])
 
-    sel_col, disp_col = st.columns(2)
+    
 
