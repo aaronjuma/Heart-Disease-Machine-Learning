@@ -1,4 +1,4 @@
-# Heart-Disease-Machine-Learning
+# Heart Disease ML Website
 ---
 Created by: Aaron, Wallace
 
