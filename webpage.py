@@ -3,6 +3,8 @@ from turtle import setx
 import streamlit as st
 import json
 import Utils
+import Model
+
 
 with open('dataset/columns.json') as json_file:
     data = json.load(json_file)
@@ -14,7 +16,7 @@ with header:
 
     # TODO: Weight and Height BMI CALCUALTIONS UNDER
 
-    status = st.radio(label = 'Select your height/weight format: ',
+    status = st.radio(label = 'Select your weight/height format: ',
                         options = ['kgs/cms', 'lbs/inches'])
 
     if status == 'kgs/cms':
@@ -29,6 +31,7 @@ with header:
                                     min_value = 90,
                                     max_value = 250,
                                     step = 5)
+        bmi = Utils.calculateBMI(weight, height, True)
     else:
         weight = st.number_input(label = "Enter your weight (in lbs)",
                                     value = 120,
@@ -41,6 +44,7 @@ with header:
                                     min_value = 36,
                                     max_value = 96,
                                     step = 1)
+        bmi = Utils.calculateBMI(weight, height, False)
 
 
 
@@ -90,7 +94,7 @@ with header:
     sleep   = st.number_input(label = 'On average, how many hours of sleep do you get on a daily basis?',
                         min_value = 0,
                         max_value = 24,
-                        value = 20,
+                        value = 8,
                         step = 0)
 
     asthma  = st.radio(label = 'Do you have/had asthma?', 
@@ -102,5 +106,13 @@ with header:
     skin    = st.radio(label = 'Do you have/had skin cancer?', 
                         options = data['SkinCancer'])
 
+    if st.button('Calculate'):
+        model = Model.Model()
+        inputs = Utils.turnInputsToDic(bmi, smoke, alcohol, stroke,
+                                        physical, mental, walk, sex,
+                                        age, race, diabetic, active, health, 
+                                        sleep, asthma, kidney, skin)
+        predictedValue = model.predict(inputs)
+        st.write(predictedValue)
     
 
