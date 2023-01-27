@@ -2,14 +2,15 @@ from time import sleep
 from turtle import setx
 import streamlit as st
 import json
+import Utils
 
-with open('columns.json') as json_file:
+with open('dataset/columns.json') as json_file:
     data = json.load(json_file)
 
 header = st.container()
 
 with header:
-    st.title("HELLLO")
+    st.title("Heart Disease Predictor")
 
     # TODO: Weight and Height BMI CALCUALTIONS UNDER
 
@@ -46,12 +47,18 @@ with header:
 
     smoke   = st.radio(label = 'Have you smoked at least 100 cigarettes in your entire life?', 
                         options = data['Smoking'])
-
+    
     alcohol = st.radio(label = 'Do you drink alcohol?', 
                         options = data['AlcoholDrinking'])
 
     stroke  = st.radio(label = 'Have you ever had a stroke?', 
                         options = data['Stroke'])
+
+    physical= st.slider(label = 'Rate your ',
+                        min_value = 0,
+                        max_value = 24,
+                        value = 20,
+                        step = 0)
 
     walk    = st.radio(label = 'Do you have difficulty walking or climbing the stairs?', 
                         options = data['DiffWalking'])
