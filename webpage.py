@@ -57,21 +57,6 @@ with header:
     stroke  = st.radio(label = 'Have you ever had a stroke?', 
                         options = data['Stroke'])
 
-    physical= st.slider(label = 'How many days was your physical health not good? (This can include illness or injury)',
-                        min_value = 0,
-                        max_value = 30,
-                        value = 0,
-                        step = 1)
-    
-    mental  = st.slider(label = 'How many days was your mental health not good?',
-                        min_value = 0,
-                        max_value = 30,
-                        value = 0,
-                        step = 1)
-
-    walk    = st.radio(label = 'Do you have difficulty walking or climbing the stairs?', 
-                        options = data['DiffWalking'])
-
     sex     = st.radio(label = 'What is your biological sex?', 
                         options = data['Sex'])
 
@@ -108,10 +93,14 @@ with header:
     if st.button('Calculate'):
         model = Model.Model()
         inputs = Utils.turnInputsToDic(bmi, smoke, alcohol, stroke,
-                                        physical, mental, walk, sex,
-                                        age, race, diabetic, active, health, 
+                                        sex, age, race, diabetic, active, health, 
                                         sleep, asthma, kidney, skin)
         predictedValue = model.predict(inputs)
-        st.write(predictedValue)
+        if predictedValue < 15:
+            st.success('You are not at risk of heart disease!')
+        elif predictedValue > 15 and predictedValue < 40:
+            st.warning('There is a chance you might be at risk')
+        else:
+            st.error('You may likely be at risk')
     
 
