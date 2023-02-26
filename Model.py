@@ -7,7 +7,6 @@ class Model:
     def predict(self, dict):
         input_dict = {name: tf.convert_to_tensor([value]) for name, value in dict.items()}
         predictions = self.model.predict(input_dict)
-        prob = tf.nn.sigmoid(predictions[0])
-        value = prob.numpy()[0]
+        value = predictions[0][0]
         return round(value*100, 2)
 
