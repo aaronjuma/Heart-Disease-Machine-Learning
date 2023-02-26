@@ -48,7 +48,7 @@ with header:
 
 
 
-    smoke   = st.radio(label = 'Have you smoked at least 100 cigarettes in your entire life?', 
+    smoke   = st.radio(label = 'Do you smoke?', 
                         options = data['Smoking'])
     
     alcohol = st.radio(label = 'Do you drink alcohol?', 
@@ -63,13 +63,13 @@ with header:
     age     = st.selectbox(label = "What is your age?",
                         options = data['AgeCategory'])
 
-    race    = st.selectbox(label = "What is your age?",
+    race    = st.selectbox(label = "What is your race?",
                         options = data['Race'])
 
-    diabetic= st.selectbox(label = "Are you or have been close to being diabetic",
+    diabetic= st.selectbox(label = "Are you or have been close to being diabetic?",
                         options = data['Diabetic'])
 
-    active  = st.radio(label = 'Are you physically active', 
+    active  = st.radio(label = 'Are you physically active?', 
                         options = data['PhysicalActivity'])
 
     health  = st.selectbox(label = 'What would you say your general health is like?', 
@@ -81,7 +81,7 @@ with header:
                         value = 8,
                         step = 0)
 
-    asthma  = st.radio(label = 'Do you have/had asthma?', 
+    asthma  = st.radio(label = 'Do you have asthma?', 
                         options = data['Asthma'])
 
     kidney  = st.radio(label = 'Do you have/had kidney cancer?', 
